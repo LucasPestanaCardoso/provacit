@@ -31,5 +31,7 @@ public class ProvaApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         repository.deleteAll();
         repository.save(Usuario.builder().id("1").nome("Lucas Pestana").build());
+        repository.save(Usuario.builder().id("2").nome("Wilker").build());
+        repository.save(Usuario.builder().id("3").nome("Thomas").build());
     }
 }
