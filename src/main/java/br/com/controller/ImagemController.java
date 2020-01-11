@@ -44,9 +44,9 @@ public class ImagemController {
 
     @GetMapping(value = "/download" )
     @ApiOperation(value = "Método para realizar o download das imagens")
-    public ResponseEntity<?> listar(
+    public ResponseEntity<?> download(
             @ApiParam(value = "Nome do Arquivo" , required = true)
-            @RequestParam() String nomeArquivo) throws Exception {
+            @RequestParam() String nomeArquivo) throws BusinessException {
 
         Imagem imagem = service.carregarImagem(nomeArquivo);
         return ResponseEntity.ok()

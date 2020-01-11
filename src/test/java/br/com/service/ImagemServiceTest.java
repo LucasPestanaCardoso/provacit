@@ -1,17 +1,15 @@
 package br.com.service;
 
-import br.com.enums.StatusUploadEnum;
-import br.com.enums.TipoImagemEnum;
 import br.com.exception.BusinessException;
 import br.com.model.Imagem;
 import br.com.model.Usuario;
 import br.com.prova.ProvaApplication;
 import br.com.repository.ImagemRepository;
 import br.com.repository.UsuarioRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FilenameUtils;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +17,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.stereotype.Service;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static org.apache.commons.lang3.StringUtils.*;
-import static org.springframework.util.CollectionUtils.isEmpty;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ProvaApplication.class)
@@ -75,7 +64,7 @@ public class ImagemServiceTest {
     }
 
     @Test
-    public void validaTamanhoArquivoTest() throws BusinessException, IOException {
+    public void validaTamanhoArquivoTest()  {
         byte[] bytes = new byte[1024 * 1024 * 10];
 
         file = new MockMultipartFile(
@@ -93,7 +82,7 @@ public class ImagemServiceTest {
     }
 
     @Test
-    public void validaTipoDoArquivoTest() throws BusinessException, IOException {
+    public void validaTipoDoArquivoTest()  {
         byte[] bytes = new byte[1024];
         MockMultipartFile file =
                 new MockMultipartFile(
@@ -111,7 +100,7 @@ public class ImagemServiceTest {
     }
 
     @Test
-    public void validaUsuarioExistenteTest() throws BusinessException, IOException {
+    public void validaUsuarioExistenteTest()  {
         BusinessException businessException =  Assertions.assertThrows(BusinessException.class , () -> {
             imagemService.salvarImagem(file , "555");
         });
@@ -122,7 +111,7 @@ public class ImagemServiceTest {
 
 
     @Test
-    public void validaUsuarioObrigatorioTest() throws BusinessException, IOException {
+    public void validaUsuarioObrigatorioTest() {
         BusinessException businessException =  Assertions.assertThrows(BusinessException.class , () -> {
             imagemService.salvarImagem(file , "");
         });
