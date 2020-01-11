@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Base64;
-import java.util.List;
 
 @RestController
 @RequestMapping("v1/imagem")
@@ -48,12 +46,13 @@ public class ImagemController {
     @ApiOperation(value = "Método para realizar o download das imagens")
     public ResponseEntity<?> listar(
             @ApiParam(value = "Nome do Arquivo" , required = true)
-            @RequestParam(required = true) String nomeArquivo) throws Exception {
+            @RequestParam() String nomeArquivo) throws Exception {
 
         Imagem imagem = service.carregarImagem(nomeArquivo);
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(imagem.getTipo().getMediaType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + imagem.getNome() + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + imagem.getNome().concat("." + imagem.getTipo().getNome()) + "\"")
                 .body(imagem.getBytes());
     }
 
@@ -63,21 +62,16 @@ public class ImagemController {
     public ResponseEntity<?> listarImagem(
             @ApiParam(value = "Nome do Arquivo", required=false)
             @RequestParam(required=false) String nomeArquivo) throws BusinessException {
-
-       List<Imagem> imgs = service.carregarImagens(nomeArquivo);
-       byte[] encoded = Base64.getEncoder().encode(imgs.get(0).getBytes());
-
-        return new ResponseEntity(imgs , HttpStatus.OK);
+        return new ResponseEntity(service.carregarImagens(nomeArquivo) , HttpStatus.OK);
     }
 
 
-    @PostMapping(value = "/delete-by-usuario" ,
+    @DeleteMapping(value = "/delete-by-usuario" ,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Método para deletar as imagens pelo Usuario")
     public ResponseEntity<?> delete(
             @ApiParam(value = "ID Usuario", required=true)
-            @RequestParam(required=true) String id) throws BusinessException {
-
+            @RequestParam() String id) throws BusinessException {
         service.deletarImagens(id);
         return new ResponseEntity("Imagens deletadas com sucesso !!" , HttpStatus.OK);
     }
