@@ -12,6 +12,9 @@ URL : http://localhost:8080/swagger-ui.html
 - Além dos métodos pedidos eu criei o http://localhost:8080/v1/imagem/download para fazer o download da imagem por que eu fiquei com a dúvida se era para trazer a imagem na API de listagem, então optei por criar um endpoint diferente.
 
 - Utilizei Mockito e fiz Testes com insert no Mongo no Junit também, projeto esta com 90% de Line Coverage no Intellij
+
+- Utilizei Lombok caso o projeto apresente erro de compilação na sua IDE so baixar o plugin 
+
        
 
  Qualquer erro que a aplicação apresentar, pode entrar em contato lucaspestanaa@gmail.com
