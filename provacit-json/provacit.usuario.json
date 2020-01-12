@@ -1,0 +1,5 @@
+[
+{ "_id" : "1", "nome" : "Lucas Pestana", "_class" : "br.com.model.Usuario" },
+{ "_id" : "2", "nome" : "Wilker", "_class" : "br.com.model.Usuario" },
+{ "_id" : "3", "nome" : "Thomas", "_class" : "br.com.model.Usuario" }
+]

@@ -17,21 +17,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan({"br.com"})
 @EnableSwagger2
 @EnableMongoRepositories(basePackages = "br.com.repository")
-public class ProvaApplication implements CommandLineRunner {
+public class ProvaApplication  {
 
     public static void main(String[] args) {
 
         SpringApplication.run(ProvaApplication.class, args);
     }
 
-    @Autowired
-    private UsuarioRepository repository;
-
-    @Override
-    public void run(String... args) throws Exception {
-        repository.deleteAll();
-        repository.save(Usuario.builder().id("1").nome("Lucas Pestana").build());
-        repository.save(Usuario.builder().id("2").nome("Wilker").build());
-        repository.save(Usuario.builder().id("3").nome("Thomas").build());
-    }
 }
