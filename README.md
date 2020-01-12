@@ -12,8 +12,8 @@ URL : http://localhost:8080/swagger-ui.html
 - Além dos métodos pedidos eu criei o `http://localhost:8080/v1/imagem/download` para fazer o download da imagem por que eu fiquei com a dúvida se era para trazer a imagem na API de listagem, então optei por criar um endpoint diferente.
 
 - Na raiz do projeto tem uma pasta chamada e o dump da base do Mongo (db provacit) 
--  `mongoimport --db provacit --collection usuario --file {seu path}/provacit-json/provacit.usuario.json --jsonArray`
--  `mongoimport --db provacit --collection imagem --file {seu path}/provacit-json/provacit.imagem.json --jsonArray`
+ -  `mongoimport --db provacit --collection usuario --file {seu path}/provacit-json/provacit.usuario.json --jsonArray`
+ -  `mongoimport --db provacit --collection imagem --file {seu path}/provacit-json/provacit.imagem.json --jsonArray`
 
 - Utilizei Mockito e fiz Testes com insert no Mongo no Junit também, projeto esta com 90% de Line Coverage no Intellij.
 
