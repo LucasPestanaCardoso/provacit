@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.apache.commons.io.FilenameUtils.removeExtension;
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.springframework.util.CollectionUtils.isEmpty;
 
@@ -56,6 +57,7 @@ public class ImagemService {
     public Imagem carregarImagem(String nomeArquivo) throws BusinessException {
         Imagem img = new Imagem();
         if(isNotBlank(nomeArquivo)) {
+             nomeArquivo = removeExtension(nomeArquivo);
              img = imagemRepository.findByNome(nomeArquivo);
 
             if(img == null) {
