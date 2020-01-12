@@ -9,11 +9,14 @@ URL : http://localhost:8080/swagger-ui.html
 
 - Não pude usar Docker a versão do Win 10 Home não tem suporte 😒
 
-- Além dos métodos pedidos eu criei o http://localhost:8080/v1/imagem/download para fazer o download da imagem por que eu fiquei com a dúvida se era para trazer a imagem na API de listagem, então optei por criar um endpoint diferente.
+- Além dos métodos pedidos eu criei o `http://localhost:8080/v1/imagem/download` para fazer o download da imagem por que eu fiquei com a dúvida se era para trazer a imagem na API de listagem, então optei por criar um endpoint diferente.
 
 - Utilizei Mockito e fiz Testes com insert no Mongo no Junit também, projeto esta com 90% de Line Coverage no Intellij.
 
-- Na raiz do projeto tem uma pasta chamada provacit-json e um arquivo chamado provacit.agz ambos são o dump da base do Mongo (db provacit) pode escolher qual usar.
+- Na raiz do projeto tem uma pasta chamada e o dump da base do Mongo (db provacit) 
+
+ `mongoimport --db provacit --collection usuario --file {seu path}/provacit.usuario.json --jsonArray`
+ `mongoimport --db provacit --collection imagem --file {seu path}/provacit.imagem.json --jsonArray`
 
 - Utilizei Lombok caso o projeto apresente erro de compilação na sua IDE so baixar o plugin.
 
