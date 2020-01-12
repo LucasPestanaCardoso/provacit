@@ -15,8 +15,8 @@ URL : http://localhost:8080/swagger-ui.html
 
 - Na raiz do projeto tem uma pasta chamada e o dump da base do Mongo (db provacit) 
 
- `mongoimport --db provacit --collection usuario --file {seu path}/provacit.usuario.json --jsonArray`
- `mongoimport --db provacit --collection imagem --file {seu path}/provacit.imagem.json --jsonArray`
+-  `mongoimport --db provacit --collection usuario --file {seu path}/provacit.usuario.json --jsonArray`
+-  `mongoimport --db provacit --collection imagem --file {seu path}/provacit.imagem.json --jsonArray`
 
 - Utilizei Lombok caso o projeto apresente erro de compilação na sua IDE so baixar o plugin.
 
